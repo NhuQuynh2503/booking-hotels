@@ -6,11 +6,11 @@
         to="/"
         class="font-medium text-lg"
       >
-        <img
-          src="/assets/images/logo.png"
+        <!-- <img
+          src="/assets/images/logo.jpjpg"
           class="w-32"
           alt=""
-        />
+        /> -->
       </RouterLink>
     </div>
 
@@ -22,3 +22,6 @@
     </div>
   </div>
 </template>
+<!-- <script setup>
+import logo from '@/assets/images/logo.jpg';
+</script> -->
