@@ -14,11 +14,11 @@ import TopBar from '@/components/layout/TopBar.vue'
   </div>
 </template>
 
-<style  scoped>
+<style scoped>
 .container-div {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh; 
   width: 100%;
   overflow: hidden;
 }
@@ -31,19 +31,15 @@ import TopBar from '@/components/layout/TopBar.vue'
   z-index: 1000;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
 .content {
   flex: 1;
   margin-top: 80px; 
-  margin-bottom: 60px; 
-  overflow-y: auto;
   padding: 0px;
+  overflow-y: auto;
+}
+
+.footer {
+  width: 100%;
+  margin-top: auto; 
 }
 </style>

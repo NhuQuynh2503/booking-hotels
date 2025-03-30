@@ -39,10 +39,21 @@ const routes: RouteRecordRaw[] = [
     // beforeEnter: [authGuard],
     children: contactRoute,
   },
+  // {
+  //   path: '/hotels',
+  //   // beforeEnter: [authGuard],
+  //   children: hotelRoute,
+  // },
   {
     path: '/hotels',
-    // beforeEnter: [authGuard],
-    children: hotelRoute,
+    children: [
+      ...hotelRoute,
+      {
+        path: ':id', // Route động cho từng khách sạn
+        name: 'HotelDetail',
+        component: () => import('@/pages/hotel/hotelDetail.vue'),
+      },
+    ],
   },
 
 ]

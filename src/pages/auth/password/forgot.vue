@@ -1,65 +1,11 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { forgotPasswordApi } from '@/services/auth'
 import ErrorMessage from '@/components/base/ErrorMessage.vue'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
-// import Vue from 'vue';
-// import { validEmail } from '~/modules/validation/ValidAuth.js';
-// import { mapActions } from 'vuex';
-// import { forgot_password_client_api } from '~/services/authService';
-// import langAuth from '~/components/Layout/langAuth.vue';
-// import QuestionPopup from '~/components/Layout/QuestionPopup.vue';
-// export default Vue.extend({
-//     auth: false,
-//     components: {
-//         langAuth,
-//         QuestionPopup,
-//     },
-//     middleware: 'guest',
-//     data() {
-//         return {
-//             checked: false,
-//             email: '',
-//             errorEmail: '',
-//             question: null,
-//         };
-//     },
-//     methods: {
-//         ...mapActions({
-//             set_noti_mess: 'noti_mess/set_noti_mess',
-//         }),
-//         checkEmail() {
-//             const check = validEmail(this.email);
-//             this.errorEmail = check.mess;
 
-//             return check.check;
-//         },
-//         onGoToLogin() {
-//             this.$router.push('/login');
-//         },
-//         onGoToHomePage() {
-//             this.$router.push('/');
-//         },
-//         async sendForgotPassword() {
-//             if (this.checkEmail()) {
-//                 try {
-//                     await forgot_password_client_api({
-//                         email: this.email,
-//                     }).then(() => {
-//                         this.question = {
-//                             type: 'SUCCESS',
-//                             body: this.$t('question.check_email_confirm'),
-//                         };
-//                     });
-//                 } catch (e) {
-//                     this.errorEmail = e;
-//                 }
-//             }
-//         },
-//     },
-// });
 const errorEmail = ref()
 
 const handleForgot = async () => {
@@ -139,4 +85,44 @@ const [email, emailAttrs] = defineField('email')
     0px 1px 3px 0px rgba(16, 24, 40, 0.1),
     0px 1px 2px 0px rgba(16, 24, 40, 0.06);
 }
-</style>
+</style> -->
+<template>
+  <div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center p-4 overflow-hidden">
+    <div class="relative w-full max-w-3xl bg-white shadow-lg rounded-lg overflow-hidden">
+      <button @click="$emit('close')" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+        &times;
+      </button>
+      <div class="flex w-full h-auto">
+        <div class="hidden md:block flex-1 bg-cover bg-center" style="background-image: url('/assets/images/bg.jpg');">
+          <div class="h-full flex justify-center items-center bg-white/70 p-6">
+            <h1 class="text-4xl font-bold text-center">
+              <span class="text-blue-500">Elite</span>
+              <span class="text-gray-600">Booking</span>
+            </h1>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center bg-white p-14">
+          <h2 class="text-3xl font-semibold mb-6">Forgot Password</h2>
+          <form class="w-full max-w-md space-y-5">
+            <div>
+              <label class="block text-lg font-bold mb-1">Email</label>
+              <input type="email" placeholder="Enter your email" required
+                class="w-full p-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <button type="submit"
+              class="w-full p-5 bg-blue-500 text-white rounded text-lg hover:bg-blue-600 transition">
+              Send Reset Link
+            </button>
+            <p class="text-center mt-5">
+              Remember your password? <a href="#" class="text-blue-500 hover:underline"><RouterLink to="/signin">Login</RouterLink></a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+defineEmits(['close']);
+</script>

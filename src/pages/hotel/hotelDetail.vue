@@ -1,111 +1,247 @@
 <template>
-    <div class="container mx-auto px-4 py-10">
-      <h2 class="text-3xl font-bold mb-6 text-center">Hạng Phòng</h2>
-      <div v-for="roomCategory in roomCategories" :key="roomCategory.id" class="mb-10">
-        <h3 class="text-2xl font-semibold mb-4">{{ roomCategory.category }}</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          <div v-for="room in roomCategory.rooms" :key="room.id"
-            class="relative overflow-hidden rounded-2xl shadow-lg bg-cover bg-center h-80 transition-transform transform hover:scale-105 pg-20"
-            :style="{ backgroundImage: `url(${room.image})` }">
-            
-            <div class="h-2/3 bg-cover bg-center" :style="{ backgroundImage: `url(${room.image})` }"></div>
-            
-            
-            <div class="h-1/3 bg-black bg-opacity-50 flex flex-col justify-between text-white p-4">
-              <h4 class="text-lg font-semibold">{{ room.name }}</h4>
-              <p class="text-sm">{{ room.description }}</p>
-              <p class="text-lg font-bold mt-2">{{ room.price }}</p>
-              <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded">Đặt ngay</button>
-            </div>
+  <div class="p-8 bg-gradient-to-r from-gray-100 to-blue-100">
+    <div class="container mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-6 py-2">
+      <!-- Phần trái: Thông tin khách sạn (Chiếm 2/3) -->
+      <div class="md:col-span-2 space-y-6">
+        <!-- Tiêu đề -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <h1 class="text-2xl font-bold text-text flex items-center justify-center gap-2">
+            <i class="fas fa-hotel"></i> Tên khách sạn
+          </h1>
+          <p class="text-text flex items-center justify-center gap-2 mt-2">
+            <i class="fas fa-map-marker-alt"></i> Địa chỉ khách sạn
+          </p>
+        </div>
+
+        <!-- Hình ảnh -->
+        <div class="flex gap-4">
+          <div class="w-2/3">
+            <img src="/assets/images/rooms.webp" class="w-full h-64 object-cover rounded-lg shadow-md">
+          </div>
+          <div class="w-1/3 grid grid-cols-2 gap-2">
+            <img src="/assets/images/img-hotel-6.jpeg"
+              class="w-full h-32 object-cover rounded-lg hover:scale-105 transition">
+            <img src="/assets/images/restaurant.jpg"
+              class="w-full h-32 object-cover rounded-lg hover:scale-105 transition">
+            <img src="/assets/images/tennis.jpg" class="w-full h-32 object-cover rounded-lg hover:scale-105 transition">
+            <img src="/assets/images/massage.jpg"
+              class="w-full h-32 object-cover rounded-lg hover:scale-105 transition">
+          </div>
+        </div>
+
+        <!-- Giới thiệu -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-text">Giới thiệu</h2>
+          <div class="w-12 h-1 bg-text my-2"></div>
+          <p class="text-text leading-relaxed">
+            La Vela Saigon Hotel là khách sạn 5 sao sang trọng, tọa lạc ngay trung tâm TP. Hồ Chí Minh, mang
+            đến không gian nghỉ dưỡng hoàn hảo với phong cách thiết kế tinh tế, đẳng cấp. Với vị trí thuận
+            lợi, du khách có thể dễ dàng di chuyển đến các địa điểm nổi tiếng như Nhà thờ Đức Bà, Chợ Bến
+            Thành hay Phố đi bộ Nguyễn Huệ.
+            <br><br>
+            Khách sạn cung cấp hệ thống phòng nghỉ đa dạng từ tiêu chuẩn đến cao cấp, mỗi phòng đều được
+            thiết kế theo phong cách hiện đại, kết hợp với nội thất sang trọng, tạo nên một không gian nghỉ
+            dưỡng thoải mái và tiện nghi. Đặc biệt, phòng có tầm nhìn bao quát thành phố, giúp du khách tận
+            hưởng khung cảnh tuyệt đẹp về đêm.
+            <br><br>
+            Một trong những điểm nhấn của La Vela Saigon Hotel chính là hồ bơi vô cực trên tầng thượng, nơi
+            du khách có thể thư giãn trong làn nước mát lạnh và chiêm ngưỡng toàn cảnh thành phố từ trên
+            cao. Ngoài ra, khách sạn còn có hệ thống nhà hàng sang trọng phục vụ các món ăn Á - Âu đa dạng,
+            quầy bar với không gian lãng mạn, trung tâm spa cao cấp giúp bạn thư giãn sau những giờ làm việc
+            căng thẳng.
+            <br><br>
+            Đối với những ai yêu thích thể thao và chăm sóc sức khỏe, phòng gym hiện đại được trang bị đầy
+            đủ thiết bị luyện tập sẽ là một lựa chọn lý tưởng. Bên cạnh đó, trung tâm hội nghị với sức chứa
+            lớn, trang bị hệ thống âm thanh, ánh sáng hiện đại sẽ là địa điểm lý tưởng để tổ chức các sự
+            kiện, hội nghị hay tiệc cưới đẳng cấp.
+            <br><br>
+            Đội ngũ nhân viên chuyên nghiệp, tận tình luôn sẵn sàng phục vụ 24/7, đảm bảo mang đến cho du
+            khách những trải nghiệm đáng nhớ nhất. Nếu bạn đang tìm kiếm một nơi lưu trú hoàn hảo với dịch
+            vụ đẳng cấp, La Vela Saigon Hotel chính là lựa chọn lý tưởng cho bạn.
+
+          </p>
+          <div class="bg-white p-6 rounded-lg shadow-lg pb-2">
+            <h2 class="text-xl font-bold text-blue-700">Dịch vụ & Tiện ích</h2>
+            <ul class="list-disc pl-5 text-gray-700">
+              <li>Hồ bơi vô cực</li>
+              <li>Trung tâm spa & gym</li>
+              <li>Nhà hàng sang trọng</li>
+              <li>Phòng hội nghị</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phần phải: Khách sạn liên quan (Chiếm 1/3) -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold text-text">Khách sạn tương tự</h2>
+        <div class="w-12 h-1 bg-text my-2"></div>
+        <div class="space-y-4">
+          <div class="bg-white rounded-lg shadow-md hover:scale-105 transition">
+            <img src="/assets/images/img-hotel-6.jpeg" class="w-full h-32 object-cover rounded-t-lg">
+            <h3 class="text-center text-text font-semibold p-3">Khách sạn A</h3>
+          </div>
+          <div class="bg-white rounded-lg shadow-md hover:scale-105 transition">
+            <img src="/assets/images/img-hotel-2.png" class="w-full h-32 object-cover rounded-t-lg">
+            <h3 class="text-center text-text font-semibold p-3">Khách sạn B</h3>
+          </div>
+          <div class="bg-white rounded-lg shadow-md hover:scale-105 transition">
+            <img src="/assets/images/img-hotel-3.png" class="w-full h-32 object-cover rounded-t-lg">
+            <h3 class="text-center text-text font-semibold p-3">Khách sạn C</h3>
+          </div>
+          <div class="bg-white rounded-lg shadow-md hover:scale-105 transition">
+            <img src="/assets/images/img-hotel-4.png" class="w-full h-32 object-cover rounded-t-lg">
+            <h3 class="text-center text-text font-semibold p-3">Khách sạn B</h3>
+          </div>
+          <div class="bg-white rounded-lg shadow-md hover:scale-105 transition">
+            <img src="/assets/images/img-hotel-5.png" class="w-full h-32 object-cover rounded-t-lg">
+            <h3 class="text-center text-text font-semibold p-3">Khách sạn C</h3>
           </div>
         </div>
       </div>
     </div>
-  </template>
-  
-  
-  
-  
-  <script setup>
-  import { ref } from 'vue';
-  const roomCategories = ref([
-    {
-      id: 1,
-      category: 'Phòng Tiêu Chuẩn',
-      rooms: [
-        { id: 1, name: 'Standard Room 1', description: 'Phòng tiêu chuẩn rộng rãi.', price: '1,200,000đ/đêm', image: '/assets/images/room-1.jpg' },
-        { id: 2, name: 'Standard Room 2', description: 'Tiện nghi cơ bản.', price: '1,300,000đ/đêm', image: '/assets/images/room-2.jpg' },
-        { id: 3, name: 'Standard Room 3', description: 'Phòng tiện nghi đầy đủ.', price: '1,350,000đ/đêm', image: '/assets/images/room-3.jpg' },
-        { id: 4, name: 'Standard Room 4', description: 'Phòng sạch sẽ, thoải mái.', price: '1,400,000đ/đêm', image: '/assets/images/room-4.jpg' },
-        { id: 5, name: 'Standard Room 5', description: 'Thoáng mát, yên tĩnh.', price: '1,450,000đ/đêm', image: '/assets/images/room-5.jpg' },
-        { id: 6, name: 'Standard Room 6', description: 'Phòng hiện đại, tiện lợi.', price: '1,500,000đ/đêm', image: '/assets/images/room-6.jpg' },
-        { id: 7, name: 'Standard Room 7', description: 'Rộng rãi, thoải mái.', price: '1,550,000đ/đêm', image: '/assets/images/room-7.jpg' },
-        { id: 8, name: 'Standard Room 8', description: 'Phòng tiết kiệm, tiện nghi.', price: '1,600,000đ/đêm', image: '/assets/images/room-10.jpg' },
-        { id: 9, name: 'Standard Room 9', description: 'Phòng sạch sẽ, tiện nghi.', price: '1,650,000đ/đêm', image: '/assets/images/room-8.jpg' },
-        { id: 10, name: 'Standard Room 10', description: 'Phòng rộng rãi, thoải mái.', price: '1,700,000đ/đêm', image: '/assets/images/room-9.jpg' }
-      ]
-    },
-    {
-      id: 2,
-      category: 'Phòng Cao Cấp',
-      rooms: [
-        { id: 1, name: 'Deluxe Room 1', description: 'Nội thất sang trọng.', price: '2,500,000đ/đêm', image: '/assets/images/room-1.jpg'  },
-        { id: 2, name: 'Deluxe Room 2', description: 'Hướng nhìn biển.', price: '2,600,000đ/đêm', image: '/assets/images/room-2.jpg'  },
-        { id: 3, name: 'Deluxe Room 3', description: 'Phòng có tầm nhìn rộng.', price: '2,650,000đ/đêm', image: '/assets/images/room-3.jpg'  },
-        { id: 4, name: 'Deluxe Room 4', description: 'Nội thất hiện đại', price: '2,700,000đ/đêm',image: '/assets/images/room-4.jpg'  },
-        { id: 5, name: 'Deluxe Room 5', description: 'Phòng sang trọng, tiện nghi.', price: '2,750,000đ/đêm',image: '/assets/images/room-5.jpg'  },
-        { id: 6, name: 'Deluxe Room 6', description: 'Không gian sang trọng.', price: '2,800,000đ/đêm', image: '/assets/images/room-6.jpg'  },
-        { id: 7, name: 'Deluxe Room 7', description: 'Phòng đẹp với tiện ích', price: '2,850,000đ/đêm', image: '/assets/images/room-7.jpg'  },
-        { id: 8, name: 'Deluxe Room 8', description: 'Phòng cao cấp, yên tĩnh.', price: '2,900,000đ/đêm', image: '/assets/images/room-8.jpg'  },
-        { id: 9, name: 'Deluxe Room 9', description: 'Phòng rộng, sang trọng.', price: '2,950,000đ/đêm', image: '/assets/images/room-9.jpg'  },
-        { id: 10, name: 'Deluxe Room 10', description: 'Phòng tiện nghi, thoải mái.', price: '3,000,000đ/đêm', image: '/assets/images/room-10.jpg'  }
-      ]
-    },
-    {
-      id: 3,
-      category: 'Phòng Suite',
-      rooms: [
-        { id: 1, name: 'Suite Room 1', description: 'Không gian rộng rãi', price: '4,500,000đ/đêm', image: '/assets/images/room-1.jpg'  },
-        { id: 2, name: 'Suite Room 2', description: 'Ban công lớn hướng biển.', price: '4,800,000đ/đêm', image: '/assets/images/room-2.jpg'  },
-        { id: 3, name: 'Suite Room 3', description: 'Tiện nghi sang trọng.', price: '5,000,000đ/đêm', image: '/assets/images/room-3.jpg'  },
-        { id: 4, name: 'Suite Room 4', description: 'Phòng rộng rãi,tiện nghi.', price: '5,200,000đ/đêm', image: '/assets/images/room-4.jpg' },
-        { id: 5, name: 'Suite Room 5', description: 'Phòng sang trọng.', price: '5,500,000đ/đêm', image: '/assets/images/room-5.jpg'  },
-        { id: 6, name: 'Suite Room 6', description: 'Không gian  đẳng cấp', price: '5,800,000đ/đêm',image: '/assets/images/room-6.jpg'  },
-        { id: 7, name: 'Suite Room 7', description: 'Phòng tiện nghi, thoải mái.', price: '6,000,000đ/đêm', image: '/assets/images/room-7.jpg'  },
-        { id: 8, name: 'Suite Room 8', description: 'Phòng sang trọng', price: '6,200,000đ/đêm', image: '/assets/images/room-8.jpg'  },
-        { id: 9, name: 'Suite Room 9', description: 'Phòng cao cấp', price: '6,500,000đ/đêm', image: '/assets/images/room-9.jpg' },
-        { id: 10, name: 'Suite Room 10', description: 'Phòng đầy đủ tiện nghi.', price: '6,800,000đ/đêm', image: '/assets/images/room-10.jpg'  } 
-      ]
-    },
-    {
-      id: 4,
-      category: 'Phòng Tổng Thống',
-      rooms: [
-        { id: 1, name: 'Presidential Suite 1', description: 'Không gian sang trọng.', price: '10,000,000đ/đêm', image: '/assets/images/room-1.jpg'},
-        { id: 2, name: 'Presidential Suite 2', description: 'Trang bị đẳng cấp.', price: '12,000,000đ/đêm', image: '/assets/images/room-2.jpg'},
-        { id: 3, name: 'Presidential Suite 3', description: 'Phòng tổng thống xịn.', price: '13,000,000đ/đêm', image: '/assets/images/room-3.jpg'},
-        { id: 4, name: 'Presidential Suite 4', description: 'Dịch vụ đặc biệt cao cấp.', price: '14,000,000đ/đêm',image: '/assets/images/room-4.jpg'},
-        { id: 5, name: 'Presidential Suite 5', description: 'Phòng sang trọng', price: '15,000,000đ/đêm', image: '/assets/images/room-5.jpg'},
-        { id: 6, name: 'Presidential Suite 6', description: 'Không gian rộng rãi', price: '16,000,000đ/đêm', image: '/assets/images/room-6.jpg'},
-        { id: 7, name: 'Presidential Suite 7', description: 'Phòng dịch vụ đặc quyền.', price: '17,000,000đ/đêm', image: '/assets/images/room-7.jpg'},
-        { id: 8, name: 'Presidential Suite 8', description: 'Tiện nghi cao cấp.', price: '18,000,000đ/đêm', image: '/assets/images/room-8.jpg'},
-        { id: 9, name: 'Presidential Suite 9', description: 'Phòng tổng thống đẹp.', price: '19,000,000đ/đêm', image: '/assets/images/room-9.jpg'},
-        { id: 10, name: 'Presidential Suite 10', description: 'Phòng cực kỳ sang trọng.', price: '20,000,000đ/đêm', image: '/assets/images/room-10.jpg' }
-      ]
-    }
-  ]);
-  
-  
-  </script>
-  
-  <style scoped>
-  .container {
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .hover\:brightness-110:hover {
-    filter: brightness(1.1);
-  }
-  </style>
-  
+
+    <div class="container mx-auto px-8 pt-4">
+      <h2 class="text-xl font-bold text-text">Phòng</h2>
+      <div class="w-12 h-1 bg-blue-700 mb-6"></div>
+      <swiper :modules="[Navigation, Pagination, Autoplay]" :slides-per-view="5" :space-between="16"
+        :autoplay="{ delay: 500, disableOnInteraction: false }" :loop="true" class="pb-4">
+        <swiper-slide v-for="(room, index) in rooms" :key="index">
+          <div class="bg-white rounded-lg shadow-md hover:scale-105 transition">
+            <img :src="room.image" class="w-full h-32 object-cover rounded-t-lg">
+            <h3 class="text-center text-text font-semibold p-3">{{ room.name }}</h3>
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
+    <div class="container mx-auto px-8 pt-4">
+      <h2 class="text-xl font-bold text-text">Bảng giá phòng</h2>
+      <div class="w-12 h-1 bg-blue-700 mb-6"></div>
+      <table class="w-full border-collapse border border-gray-800 mt-2 text-sm md:text-base text-center">
+        <thead>
+          <tr class="bg-gray-200 text-gray-900">
+            <th class="p-3 border border-gray-800">Loại phòng</th>
+            <th class="p-3 border border-gray-800">Giá (VND)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="room in roomPrices" :key="room.type" class="border-b border-gray-800">
+            <td class="p-3 border border-gray-800">{{ room.type }}</td>
+            <td class="p-3 text-blue-700 border border-gray-800">{{ room.price }} VND</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Đánh giá khách hàng -->
+    <div class="container mx-auto px-8 pt-4">
+      <h2 class="text-xl font-bold text-text">Đánh giá khách hàng</h2>
+      <div class="w-12 h-1 bg-blue-700 mb-6"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-for="review in reviews" :key="review.id"
+          class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+          <div class="flex items-center space-x-3 mb-4">
+            <div
+              class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center text-lg font-semibold">
+              {{ review.name.charAt(0) }}
+            </div>
+            <div>
+              <p class="font-bold text-lg text-gray-900">{{ review.name }}</p>
+              <p class="text-sm text-gray-500">{{ review.date }}</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">"{{ review.comment }}"</p>
+          <div class="mt-3 flex justify-center">
+            <span v-for="star in review.rating" :key="star" class="text-yellow-400 text-lg">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bản đồ Google Maps -->
+    <div class="container mx-auto px-8 pt-4">
+      <iframe class="w-full h-72 md:h-96 rounded-lg shadow-lg" src="https://www.google.com/maps/embed?..."
+        allowfullscreen></iframe>
+    </div>
+
+    <!-- Ưu đãi & khuyến mãi -->
+    <div class="container mx-auto  p-6  my-6 text-white text-center">
+      <div class="bg-white text-gray-800 p-5 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold tracking-wide mb-4 flex items-center justify-center gap-2">
+          🎁 Ưu đãi & Khuyến mãi 🎉
+        </h2>
+        <ul class="space-y-3">
+          <li class="flex items-center gap-3">
+            <span class="text-green-500 text-xl">✅</span> Giảm <span class="text-red-500 font-bold">20%</span> khi đặt
+            phòng online
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500 text-xl">✅</span> Tặng <span class="text-blue-500 font-bold">buffet sáng miễn
+              phí</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500 text-xl">✅</span> Check-in sớm & check-out muộn miễn phí
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500 text-xl">✅</span> Nhận ưu đãi khi đặt từ 2 đêm trở lên
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Form đặt phòng -->
+    <div class="container mx-auto px-6 py-2 my-6 text-white text-center">
+      <div class="bg-text text-gray-800 p-5 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-white tracking-wide mb-4 flex items-center justify-center gap-2">
+          🏨 Đặt phòng ngay 📅
+        </h2>
+        <form class="bg-white p-6 rounded-lg shadow-md space-y-4 text-gray-700">
+          <input type="text" placeholder="🔹 Họ và tên"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+          <input type="email" placeholder="📧 Email"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+          <input type="date"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+          <button
+            class="bg-text text-white px-6 py-3 rounded-lg w-full font-semibold hover:bg-blue-800 transition-all duration-300">
+            🚀 Gửi yêu cầu ngay!
+          </button>
+        </form>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</template>
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+const rooms = [
+  { name: "Phòng A", image: "/assets/images/room-1.jpg" },
+  { name: "Phòng B", image: "/assets/images/room-2.jpg" },
+  { name: "Phòng C", image: "/assets/images/room-3.jpg" },
+  { name: "Phòng D", image: "/assets/images/room-4.jpg" },
+  { name: "Phòng E", image: "/assets/images/room-5.jpg" },
+  { name: "Phòng F", image: "/assets/images/room-6.jpg" },
+  { name: "Phòng G", image: "/assets/images/room-7.jpg" },
+  { name: "Phòng F", image: "/assets/images/room-8.jpg" },
+  { name: "Phòng G", image: "/assets/images/room-10.jpg" },
+];
+const roomPrices = ref([
+  { type: "Phòng Deluxe", price: "1,500,000" },
+  { type: "Phòng Suite", price: "2,500,000" },
+  { type: "Phòng VIP", price: "5,000,000" }
+]);
+const reviews = ref([
+  { id: 1, name: "Nguyễn Văn A", comment: "Khách sạn rất đẹp và tiện nghi. Dịch vụ tuyệt vời!" },
+  { id: 2, name: "Trần Thị B", comment: "Phòng sạch sẽ, view đẹp, nhân viên nhiệt tình. Sẽ quay lại!" },
+  { id: 3, name: "Lê Văn C", comment: "Giá cả hợp lý, ăn sáng ngon, vị trí thuận tiện." }
+]);
+</script>

@@ -25,6 +25,7 @@ export default {
   	},
   	extend: {
   		colors: {
+			text: "#1e3a8a",
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
@@ -66,6 +67,9 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
+		  backgroundImage: {
+			'gradient-primary': 'linear-gradient(135deg, #F4F5F7, #DCE3F2)',
+		  },
   		borderRadius: {
   			xl: 'calc(var(--radius) + 4px)',
   			lg: 'var(--radius)',
