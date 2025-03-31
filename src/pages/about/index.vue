@@ -1,77 +1,56 @@
+<script setup lang="ts">
+import Header from '@/components/layout/Header.vue'
+import Footer from '@/components/layout/Footer.vue'
+</script>
+
 <template>
-    <div class="container mx-auto p-6">
-      <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">🏨 Danh Sách Phòng Khách Sạn</h1>
-      
-      <!-- Bộ lọc -->
-      <div class="flex flex-wrap gap-4 justify-center mb-8 bg-gray-200 p-6 rounded-lg shadow-lg">
-        <input v-model="filters.name" type="text" placeholder="🔍 Tìm theo tên" class="border p-3 rounded-lg w-60 focus:ring-2 focus:ring-blue-500" />
-        <select v-model="filters.type" class="border p-3 rounded-lg w-40 focus:ring-2 focus:ring-blue-500">
-          <option value="">Tất cả loại phòng</option>
-          <option v-for="type in roomTypes" :key="type" :value="type">{{ type }}</option>
-        </select>
-        <input v-model.number="filters.guests" type="number" min="1" placeholder="👥 Số lượng khách" class="border p-3 rounded-lg w-40 focus:ring-2 focus:ring-blue-500" />
-        <button @click="filterRooms" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition-all">🔍 Lọc</button>
-      </div>
-  
-      <!-- Danh sách phòng -->
-      <div class="space-y-8">
-        <div v-for="(group, index) in groupedRooms" :key="index" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div v-for="room in group" :key="room.id" class="border p-6 rounded-lg shadow-md bg-white hover:shadow-lg transition-all">
-            <img :src="room.image" alt="room.name" class="w-full h-48 object-cover mb-4 rounded-lg">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-1">🏡 {{ room.name }}</h2>
-            <p class="text-gray-600 text-sm">🛏 Loại: <strong>{{ room.type }}</strong></p>
-            <p class="text-gray-600 text-sm">👤 Số lượng khách: <strong>{{ room.guests }}</strong></p>
-            <p class="text-green-600 font-bold text-lg">💰 {{ room.price.toLocaleString() }} VND/đêm</p>
-            <p class="text-gray-500 text-sm">📍 Địa điểm: {{ room.location }}</p>
-            <p class="text-yellow-500 text-sm">⭐ {{ room.rating }}/5</p>
-            <button class="mt-4 w-full bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition-all text-sm">🛎 Đặt ngay</button>
-          </div>
+  <main class="pt-20 pb-16 text-center bg-[linear-gradient(135deg,#F4F5F7,#DCE3F2)]">
+    <div class="max-w-5xl mx-auto px-5">
+      <h1 class="text-4xl font-bold text-blue-900 uppercase mb-5">Giới Thiệu Về Chúng Tôi</h1>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Chào mừng bạn đến với <span class="text-red-500 font-bold">EliteBooking</span>! Chúng tôi cung cấp dịch vụ đặt phòng khách sạn hàng đầu với
+        trải nghiệm người dùng mượt mà, tiện lợi và nhanh chóng.
+      </p>
+
+      <section class="flex flex-col md:flex-row gap-8 justify-center mt-10">
+        <div class="flex-1 bg-white p-8 rounded-xl shadow-lg transition-transform transform hover:-translate-y-2 text-center">
+          <div class="text-4xl text-red-500 mb-3">🚀</div>
+          <h2 class="text-xl font-bold text-blue-900 mb-2">Sứ Mệnh</h2>
+          <p class="text-gray-700">Đem đến cho khách hàng dịch vụ đặt phòng tốt nhất với mức giá hợp lý.</p>
         </div>
-      </div>
+
+        <div class="flex-1 bg-white p-8 rounded-xl shadow-lg transition-transform transform hover:-translate-y-2 text-center">
+          <div class="text-4xl text-red-500 mb-3">🌍</div>
+          <h2 class="text-xl font-bold text-blue-900 mb-2">Tầm Nhìn</h2>
+          <p class="text-gray-700">Trở thành nền tảng đặt phòng hàng đầu tại Việt Nam và khu vực Đông Nam Á.</p>
+        </div>
+
+        <div class="flex-1 bg-white p-8 rounded-xl shadow-lg transition-transform transform hover:-translate-y-2 text-center">
+          <div class="text-4xl text-red-500 mb-3">💎</div>
+          <h2 class="text-xl font-bold text-blue-900 mb-2">Giá Trị Cốt Lõi</h2>
+          <ul class="text-gray-700 space-y-2">
+            <li>✔ Chất lượng dịch vụ</li>
+            <li>✔ Uy tín và minh bạch</li>
+            <li>✔ Hỗ trợ khách hàng tận tâm</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-14 p-8 border-2 border-blue-900 rounded-lg bg-white shadow-md text-left">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Kinh nghiệm du lịch Việt Nam</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Việt Nam là một điểm đến hấp dẫn với vẻ đẹp thiên nhiên tuyệt vời, văn hóa phong phú và ẩm thực đa dạng. Từ những bãi biển tuyệt đẹp như
+          Phú Quốc, Nha Trang đến những vùng núi hùng vĩ như Sapa, Mộc Châu, mỗi địa danh đều mang một nét đặc trưng riêng, thu hút hàng triệu du khách mỗi năm.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mt-4">
+          Khi du lịch tại Việt Nam, bạn không thể bỏ lỡ những điểm đến nổi bật như Hà Nội – nơi giao thoa giữa cổ kính và hiện đại,
+          Hội An – thành phố di sản thế giới với những con đường đèn lồng rực rỡ, hay Đà Nẵng – thiên đường du lịch với biển xanh cát trắng.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mt-4">
+          Hệ thống <strong class="text-blue-900">EliteBooking</strong> giúp bạn dễ dàng tìm kiếm và đặt phòng tại hàng ngàn khách sạn, nhà nghỉ, homestay trên khắp cả nước.
+          Hãy để EliteBooking đồng hành cùng bạn trên mọi hành trình!
+        </p>
+      </section>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref, computed } from 'vue';
-  
-  const rooms = ref([
-    { id: 1, name: "Phòng Deluxe", type: "Deluxe", guests: 2, price: 1200000, image: "https://via.placeholder.com/400", location: "Hà Nội", rating: 4.5 },
-    { id: 2, name: "Phòng Family", type: "Family", guests: 4, price: 1800000, image: "https://via.placeholder.com/400", location: "TP. Hồ Chí Minh", rating: 4.7 },
-    { id: 3, name: "Phòng Standard", type: "Standard", guests: 2, price: 800000, image: "https://via.placeholder.com/400", location: "Đà Nẵng", rating: 4.2 },
-    { id: 4, name: "Phòng VIP", type: "VIP", guests: 2, price: 2500000, image: "https://via.placeholder.com/400", location: "Nha Trang", rating: 4.9 },
-    { id: 5, name: "Phòng Suite", type: "Suite", guests: 3, price: 2200000, image: "https://via.placeholder.com/400", location: "Huế", rating: 4.8 }
-  ]);
-  
-  const roomTypes = ref(["Deluxe", "Family", "Standard", "VIP", "Suite"]);
-  const filters = ref({ name: "", type: "", guests: null });
-  
-  const filteredRooms = computed(() => {
-    return rooms.value.filter(room => {
-      return (
-        (!filters.value.name || room.name.toLowerCase().includes(filters.value.name.toLowerCase())) &&
-        (!filters.value.type || room.type === filters.value.type) &&
-        (!filters.value.guests || room.guests >= filters.value.guests)
-      );
-    });
-  });
-  
-  const groupedRooms = computed(() => {
-    const chunkSize = 3;
-    return filteredRooms.value.reduce((result, room, index) => {
-      const chunkIndex = Math.floor(index / chunkSize);
-      if (!result[chunkIndex]) {
-        result[chunkIndex] = [];
-      }
-      result[chunkIndex].push(room);
-      return result;
-    }, []);
-  });
-  </script>
-  
-  <style scoped>
-  .container {
-    max-width: 1200px;
-    margin: auto;
-  }
-  </style>
-  
+  </main>
+</template>

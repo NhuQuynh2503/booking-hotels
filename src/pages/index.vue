@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class="container mx-auto p-4 pt-20 text-center">
+    <div class="container mx-auto p-4 text-center">
       <hr class="mb-4 border-t-2 border-text" />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div v-for="about in about" :key="about.id" class="p-6 flex flex-col items-center">
