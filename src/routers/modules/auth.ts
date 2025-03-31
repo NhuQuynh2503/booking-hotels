@@ -17,7 +17,7 @@ export const authRoute: RouteRecordRaw[] = [
       {
         path: 'confirm',
         name: 'register-confirm',
-        component: () => import('@/pages/auth/register/confirm.vue'),
+        component: () => import('@/pages/auth/register/Confirm.vue'),
       },
     ],
   },

@@ -9,12 +9,12 @@ export const hotelRoute: RouteRecordRaw[] = [
   {
     path: ':hotelId',
     name: 'HotelDetail',
-    component: () => import('@/pages/hotel/hotelDetail.vue'), // Trang chi tiết khách sạn
+    component: () => import('@/pages/hotel/hotelDetail.vue'), 
     children: [
       {
         path: 'rooms',
         name: 'HotelRooms',
-        component: () => import('@/pages/hotel/hotelRoom.vue'), // Danh sách phòng trong khách sạn
+        component: () => import('@/pages/hotel/hotelRoom.vue'), 
       },
     ],
   },
